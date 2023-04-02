@@ -1,5 +1,6 @@
 package app.worklib.web.ws.ui.controller;
 
+import app.worklib.web.ws.exceptions.UserServiceException;
 import app.worklib.web.ws.ui.model.request.UpdateUserDetailsRequestModel;
 import app.worklib.web.ws.ui.model.request.UserDetailsRequestModel;
 import app.worklib.web.ws.ui.model.response.UserRest;
@@ -34,6 +35,10 @@ public class UserController {
                 })
 
     public ResponseEntity<UserRest> getUser(@PathVariable String userId){
+
+        if (true) throw new UserServiceException("A user service exception is thrown.");
+
+
 
       if (users.containsKey(userId)){
           return new ResponseEntity<UserRest>(users.get(userId), HttpStatus.OK);
